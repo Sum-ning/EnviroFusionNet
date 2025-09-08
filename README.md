@@ -21,7 +21,7 @@ This project uses an **open gas sensor array dataset**.
 This study uses the gas sensor arrays dataset in open sampling settings constructed by the BioCircuits Institute at the University of California, San Diego. To collect gas response data, the laboratory constructed a wind tunnel testbed, in which a gas source was placed at the far left end as the inlet, while a fan was installed at the opposite end as the outlet to drive the gas flow through the tunnel. Gas sensor arrays were positioned between the gas inlet and the fan outlet to capture the response characteristics of the gases. To minimize manual intervention, the testbed was controlled by a fully computerized device. Under the control of the software, the dataset collected 18,000 time series gas instances involving ten high-priority chemical gases (acetone, acetaldehyde, ammonia, butanol, ethylene, methane, methanol, carbon monoxide, benzene and toluene). The sensor array of the gas detection platform consists of nine identical modules, each with eight different metal oxide gas sensors, for a total of 72 gas sensors. The acquisition time for each gas sample is 260 seconds and the changes in the sensor resistance value are recorded at a frequency of 100 Hz during the acquisition period. These data contain the complete gas response process and provide the basis for converting the gas response waveforms into image data. Some environmental conditions were also set during the experiment, including three exhaust fan wind speeds (0.1 m/s, 0.21 m/s, 0.34 m/s), six acquisition positions (L1-L6), temperature and humidity information. This information is uniformly distributed in all gas samples, providing data support for the subsequent multimodal feature modeling and the implementation of environmental compensation strategies.
 
 Steps:
-1. Download the raw dataset from the official source(https://archive.ics.uci.edu/dataset/251/gas+sensor+arrays+in+open+sampling+settings).
+1. Download the raw dataset from the official source.
 2. Convert sensor signals to **images** using `preprocess/gas_data_to_images.py`.
 3. Convert sensor signals to **sequences** using `preprocess/gas_data_to_sequence.py`.
 4. Prepare a manifest CSV to drive the training pipeline:
@@ -33,12 +33,12 @@ Steps:
 ```
 EnviroFusionNet/
 ├── models/
-│   ├── image_encoder.py
-│   ├── sequence_encoder.py
-│   ├── environment_encoder.py
-│   ├── caff_module.py
-│   ├── cmac_module.py
-│   └── fusion_model.py          # EnviroFusionNet
+│   ├── image_encoder.py         # Extracte spatial features from gas image data
+│   ├── sequence_encoder.py      # Extracte spatial features from gas sequence data
+│   ├── environment_encoder.py   # Extracte environmental features
+│   ├── caff_module.py           # CAFF module
+│   ├── cmac_module.py           # CMAC module
+│   └── fusion_model.py          # EnviroFusionNet module
 ├── preprocess/
 │   ├── gas_data_to_images.py    # convert raw sensor to images
 │   └── gas_data_to_sequence.py  # convert raw sensor to (T×C) sequences
