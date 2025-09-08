@@ -24,7 +24,7 @@ Steps:
 1. Download the raw dataset from the official source.
 2. Convert sensor signals to **images** using `preprocess/gas_data_to_images.py`.
 3. Convert sensor signals to **sequences** using `preprocess/gas_data_to_sequence.py`.
-4. Prepare a manifest CSV to drive the training pipeline:
+4. Prepare a manifest CSV to drive the training pipeline.
 
 ---
 
@@ -63,6 +63,8 @@ torchvision==0.14.1
 tqdm==4.65.0
 scikit-learn==1.2.2
 Pillow==9.4.0
+torch==1.13.1
+torchvision==0.14.1
 ```
 
 Install via:
@@ -77,7 +79,7 @@ pip install -r requirements.txt
 
 ### Train & Evaluate
 ```bash
-python main.py   --train_manifest path/to/train.csv   --val_manifest   path/to/val.csv   --test_manifest  path/to/test.csv   --weights_dir    ./weights   --batch_size 32 --epochs 30 --lr 1e-3 --num_classes 10
+python main.py   --train_manifest path/to/train.csv   --val_manifest   path/to/val.csv   --test_manifest  path/to/test.csv   --weights_dir    ./weights   --batch_size 32 --epochs 100 --lr 1e-3 --num_classes 10
 ```
 
 Outputs:
@@ -88,6 +90,6 @@ Outputs:
 
 ### Feature Visualization (t-SNE)
 ```bash
-python tsne_visualization.py   --features feats/envirofusionnet.npy feats/resnet.npy   --labels   labels.npy   --names    class_names.txt   --out      figures/tsne_compare.png   --title    "EnviroFusionNet vs. ResNet"
+python tsne_visualization.py   --features feats/envirofusionnet.npy feats/resnet.npy   --labels   labels.npy   --names    class_names.txt   --out      figures/tsne_compare.png   --title    "EnviroFusionNet"
 ```
 ---
