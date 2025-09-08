@@ -26,6 +26,7 @@ Steps:
 3. Convert sensor signals to **sequences** using `preprocess/gas_data_to_sequence.py`.
 4. Prepare a manifest CSV to drive the training pipeline.
 
+> Image conversion methods: This study adopts three image construction strategies, which are designed based on the sample dimension, sensor topology dimension, and sensor module dimension, respectively.
 ---
 
 ## 📂 Project Structure
